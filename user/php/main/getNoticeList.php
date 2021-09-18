@@ -1,7 +1,8 @@
 <?
     include $_SERVER["DOCUMENT_ROOT"]."/ContestRecruitSite/lib/php/connectDB.php";
 
-    $sql = "SELECT * FROM USR_BRD";
+    $sql = "SELECT BRD_ID, BRD_TITLE, BRD_DATE
+              FROM USR_BRD";
 
     $result = mysql_query($sql, $connect);
 
