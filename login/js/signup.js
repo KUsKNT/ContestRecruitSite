@@ -2,6 +2,10 @@ $("#signUpBtn").off("click").on("click", function() {
     signUpCheck();
 });
 
+$("#goBack").off("click").on("click", function() {
+    location.replace("/ContestRecruitSite/login/html/login.html");
+});
+
 function signUpCheck() {
     var id = $("#id").val();
     var pw = $("#pw").val();
@@ -22,4 +26,41 @@ function signUpCheck() {
     else if (id == "" || pw == "" || pw2 == "" || name == "") {
         alert("모든 정보를 입력해주세요.");
     }
+    else {
+        setLogin();
+    }
+}
+
+function setLogin() {
+    let id_ = $("#id").val();
+    let pw_ = $("#pw").val();
+    let param = "id=" + id_ + "&pw=" + pw_;
+
+    requestData("/ContestRecruitSite/login/php/signup.php", param).done(function(result) {
+        if (result) {
+            alert("회원가입이 완료되었습니다.");
+            location.replace("/ContestRecruitSite/login/html/login.html");
+        }
+        else {
+            alert("회원가입 실패");
+        }
+    })
+}
+
+function requestData(url, param) {
+    let deferred = $.Deferred();
+
+    try {
+        $.ajax({
+            url: url,
+            type: "post",
+            data: param
+        }).done(function(result) {
+            deferred.resolve(JSON.parse(result));
+        });
+    } catch(e) {
+        deferred.reject(e);
+    }
+
+    return deferred.promise();
 }
