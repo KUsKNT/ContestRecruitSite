@@ -9,7 +9,7 @@ router.get('/write', function(req,res,next){ // post로 /write로 들어올 때 
     var sql = "insert into board(name, title, content)"
     conn.query(sql, datas, function(err, rows){
         if(err) console.error("err : " + err);
-        res.redirect('/board/list');
+        res.redirect('/board/list'); //
     })
 
 
