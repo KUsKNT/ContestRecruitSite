@@ -1,4 +1,4 @@
-
+getNoticeBrdContent();
 
 
 // id 부분의 제목과 내용, 작성시간을 불러오기. 
@@ -9,10 +9,42 @@ function getNoticeBrdContent(param){
     
 
 
-    requestData('/ContestRecruitSite/user/php/main/getNoticeList.php', param).done(function(result){
-           
+    requestData('/ContestRecruitSite/user/php/post.php', param).done(function(result){
+        $("#postSection").load("post.html", function () {
+            showPostContent(result);
+        });
     });
 
+}
+
+function showPostContent(result){
+    let postBodyHtml = '';
+    
+    postBodyHtml += '<tr class = "noticeBrdTitle" id = "noticeBrdContentListId' + result['BRD_ID'] + '" ">';
+    postBodyHtml +=     '<td>' + list[i]['BRD_TITLE'] + '</td>';
+    postBodyHtml +=     '<td>' + list[i]['BRD_DATE'] + '</td>';
+    postBodyHtml += '</tr>';
+
+    $('#noticeBrdListTbody').empty().append(noticeBrdListTbodyHtml);
+
+}
+
+function showNoticeBrdList(list) {
+
+    let noticeBrdListTbodyHtml = '';
+    let noticeBrdListSize = list.length;
+
+    for(let i = 0; i < noticeBrdListSize; i++) {
+        postBodyHtml += '<tr class = "noticeBrdTitle" id = "noticeBrdContentListId' + list['BRD_ID'] + '" ">';
+        postBodyHtml +=     '<td>' + (i + 1) + '</td>';
+        postBodyHtml +=     '<td>' + list['BRD_TITLE'] + '</td>';
+        postBodyHtml +=     '<td>' + list['BRD_DATE'] + '</td>';
+        postBodyHtml += '</tr>';
+    }
+
+    $('#noticeBrdListTbody').empty().append(noticeBrdListTbodyHtml);
+
+    initNoticeBrdEvent();
 }
 
 // 데이터 요청 함수(중요)->앞으로 우리는 js에서 php로 디비에 저장된 값을 다룰 때 이 함수를 이용한다.
