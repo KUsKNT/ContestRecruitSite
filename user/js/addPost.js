@@ -1,5 +1,14 @@
-$("#submit").off("click").
+$("#posting").off("click").on("click", function(){
+    if(confirm("글을 게시하시겠습니까?")){
 
+    }
+})
+
+
+
+
+
+/*
 router.get('/write', function(req,res,next){ // post로 /write로 들어올 때 진입하게 됨
     var name = req.body.name;
     var title = req.body.title;
@@ -17,4 +26,4 @@ router.get('/write', function(req,res,next){ // post로 /write로 들어올 때 
 
     res.render('write',{title : "새로운 글 쓰기"});
 }) // 글쓰기 입력을 받을 폼을 표현할 라우터 추가
-
+*/
