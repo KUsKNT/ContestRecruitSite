@@ -35,7 +35,6 @@ function initNoticeBrdEvent(){
     $('.noticeBrdTitle').off('click').on('click', function(){
         let param = "id=" + this.id.substr(22);
         
-        //여기서 경수선배가 post.js에 getNoticeBrdContent(제목, 내용, 작성일 데이터를 불러오는 함수) 구현하기~
         getNoticeBrdContent(param);
     });
 }
