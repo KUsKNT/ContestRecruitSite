@@ -6,13 +6,19 @@
     $pw = $_POST['pw'];
 //    $pw = MD5('{$pw}');
 
-    $sql = "SELECT * FROM USR_INF WHERE USR_ID = '$id' AND USR_PW = MD5('{$pw}')";
+    $sql = "SELECT COUNT(*) AS USR_CNT FROM USR_INF WHERE USR_ID = '{$id}'";
 
     $result = mysql_query($sql, $connect);
 
     $data = mysql_fetch_array($result);
 
-    echo json_encode($data);
+    if($data["USR_CNT"] == 1){
+        $value = true;
+    }
+    else{
+        $value = false;
+    }    
+    echo json_encode($value);
     mysql_close($connect);
 
 ?>
