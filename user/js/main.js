@@ -37,4 +37,11 @@ function initNoticeBrdEvent(){
         
         getNoticeBrdContent(param);
     });
+
+    // 글쓰기 버튼 클릭 시
+    $('#writeBtn').off('click').on('click', function(){ // #writeNoticeBrd은 글쓰기 버튼의 아이디(noticeBrdTable.html에 나와있음)
+        $("#noticeBrdDiv").load("noticeBrdWrite.html", function () { // main.html에서 아이디가 noticeBrdDiv인 부분에 noticeBrdWrite.html(글 작성 틀)을 적용시킬 수 있다.
+            showNoticeBrdWrite();
+        });    
+    });
 }
