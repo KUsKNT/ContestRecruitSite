@@ -35,6 +35,8 @@ function showNoticeBrdContent(content){
 // 게시판 내용 이벤트
 function initNoticeBrdContentEvent(){ 
     $('#contentBack').off('click').on('click', function(){
-        location.replace("/ContestRecruitSite/user/html/main.html");
+        $("#noticeBrdDiv").load("noticeBrdTable.html", function () {
+            getNoticeBrdList();
+        });
     });
 }
