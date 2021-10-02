@@ -1,5 +1,5 @@
 <?
-    include $_SERVER["DOCUMENT_ROOT"]."/knt/lib/php/connectDB.php";
+    include $_SERVER["DOCUMENT_ROOT"]."/ContestRecruitSite/lib/php/connectDB.php";
 
     $id = $_POST['id'];
     //파라미터로 가지고 온 id를 &id라는 변수에 저장(php는 변수이름 앞에 $붙인다.)
@@ -9,7 +9,7 @@
               FROM USR_BRD
              WHERE BRD_ID = '$id'";
     
-    $result = mysql_query($sql, $connetct);
+    $result = mysql_query($sql, $connect);
 
     $row = mysql_fetch_array($result);
 

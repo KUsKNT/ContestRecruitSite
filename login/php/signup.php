@@ -3,9 +3,8 @@
 
     $id = $_POST['id'];
     $pw = $_POST['pw'];
-    $savepw = crypt($pw, md5(time()));
 
-    $sql = "INSERT INTO USR_INF(USR_ID,USR_PW) VALUES('$id','$savepw')";
+    $sql = "INSERT INTO USR_INF(USR_ID,USR_PW) VALUES('$id',MD5('{$pw}'))";
 
     $result = mysql_query($sql, $connect);
 
