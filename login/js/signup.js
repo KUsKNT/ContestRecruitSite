@@ -1,3 +1,7 @@
+$("#idBtn").off("click").on("click", function() {
+    idExist();
+});
+
 $("#signUpBtn").off("click").on("click", function() {
     signUpCheck();
 });
@@ -29,6 +33,20 @@ function signUpCheck() {
     else {
         setLogin();
     }
+}
+
+function idExist() {
+    let id_ = $("#id").val();
+    let param = "id=" + id_;
+
+    requestData("/ContestRecruitSite/login/php/idCheck.php", param).done(function(result) {
+        if (result) {
+            alert("이미 존재하는 아이디입니다.");
+        }
+        else {
+            alert("사용 가능한 아이디입니다.");
+        }
+    })
 }
 
 function setLogin() {
